@@ -15,12 +15,12 @@ public class Tratamento implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@CPF
+	@Id
 	@Column(name="CPF_Paciente")
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private String CPF;
 
-    @CRM
+    
 	@Column(name="CMR_Medico")
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private String CRM;

@@ -1,49 +1,77 @@
 package com.jcg.hibernate.crud.operations;
 
 import java.util.List;
-
 import org.apache.log4j.Logger;
 
-/*Tirar log */
 
 public class AppMain {
 
-	public final static Logger logger = Logger.getLogger(AppMain.class);
+    public final static Logger logger = Logger.getLogger(AppMain.class);
 
-	public static void main(String[] args) {
-		logger.info(".......Hibernate Crud Operations Example.......\n");
+    public static void main(String[] args) {
+        logger.info(".......Hibernate CRUD Operations Example.......\n");
 
-		logger.info("\n=======CREATE RECORDS=======\n");
-		DbOperations.createRecord();
+        // ====================== CRIANDO REGISTROS ======================
 
-		logger.info("\n=======READ RECORDS=======\n");
-		List<Contato>viewContatos = DbOperations.displayRecords();
-		if(viewContatos != null & viewContatos.size() > 0) {
-			for(Contato contatoObj : viewContatos) {
-				logger.info(contatoObj.toString());
-			}
-		}
+        logger.info("\n=======CRIANDO REGISTROS DE MÉDICOS=======\n");
+        DbOperations.createRecord();
 
-		logger.info("\n=======UPDATE RECORDS=======\n");
-		int updateId = 1;
-		DbOperations.updateRecord(updateId);
-		logger.info("\n=======READ RECORDS AFTER UPDATION=======\n");
-		List<Contato> updateContato = DbOperations.displayRecords();
-		if(updateContato != null & updateContato.size() > 0) {
-			for(Contato contatoObj : updateContato) {
-				logger.info(contatoObj.toString());
-			}
-		}
+        logger.info("\n=======CRIANDO REGISTROS DE PACIENTES=======\n");
+        DbOperations.createPacienteRecord();
 
-		logger.info("\n=======DELETE RECORD=======\n");
-		int deleteId = 5;
-		DbOperations.deleteRecord(deleteId);
-		logger.info("\n=======READ RECORDS AFTER DELETION=======\n");
-		List<Contato> deleteContatoRecord = DbOperations.displayRecords();
-		for(Contato contatoObj : deleteContatoRecord) {
-			logger.info(contatoObj.toString());
-		}
+        logger.info("\n=======CRIANDO REGISTROS DE TRATAMENTOS=======\n");
+        DbOperations.createTratamentoRecord();
 
-		System.exit(0);
-	} 
+        // ====================== LENDO REGISTROS ======================
+
+        logger.info("\n=======LENDO REGISTROS DE MÉDICOS=======\n");
+        List<Medico> medicos = DbOperations.displayRecords();
+        if (medicos != null && !medicos.isEmpty()) {
+            for (Medico medico : medicos) {
+                logger.info(medico.toString());
+            }
+        }
+
+        logger.info("\n=======LENDO REGISTROS DE PACIENTES=======\n");
+        List<Paciente> pacientes = DbOperations.displayPacienteRecords();
+        if (pacientes != null && !pacientes.isEmpty()) {
+            for (Paciente paciente : pacientes) {
+                logger.info(paciente.toString());
+            }
+        }
+
+        logger.info("\n=======LENDO REGISTROS DE TRATAMENTOS=======\n");
+        List<Tratamento> tratamentos = DbOperations.displayTratamentoRecords();
+        if (tratamentos != null && !tratamentos.isEmpty()) {
+            for (Tratamento tratamento : tratamentos) {
+                logger.info(tratamento.toString());
+            }
+        }
+
+        // ====================== ATUALIZANDO REGISTROS ======================
+
+        logger.info("\n=======ATUALIZANDO REGISTROS DE MÉDICOS=======\n");
+        int medicoUpdateId = 1; // Por exemplo, atualizando o médico com CRM = 1
+        DbOperations.updateRecord(medicoUpdateId);
+
+        logger.info("\n=======LENDO REGISTROS DE MÉDICOS APÓS ATUALIZAÇÃO=======\n");
+        medicos = DbOperations.displayRecords();
+        for (Medico medico : medicos) {
+            logger.info(medico.toString());
+        }
+
+        // ====================== DELETANDO REGISTROS ======================
+
+        logger.info("\n=======DELETANDO REGISTRO DE MÉDICO=======\n");
+        int medicoDeleteId = 5; // Por exemplo, deletando o médico com CRM = 5
+        DbOperations.deleteRecord(medicoDeleteId);
+
+        logger.info("\n=======LENDO REGISTROS DE MÉDICOS APÓS DELEÇÃO=======\n");
+        medicos = DbOperations.displayRecords();
+        for (Medico medico : medicos) {
+            logger.info(medico.toString());
+        }
+
+        System.exit(0);
+    }
 }

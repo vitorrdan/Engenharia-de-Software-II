@@ -15,10 +15,10 @@ public class Medico implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@CRM
+	@Id
 	@Column(name="CRM")
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int CRM;
+	private String CRM;
 
 	@Column(name="Nome")
 	private String Nome;
@@ -29,11 +29,11 @@ public class Medico implements Serializable {
 	@Column(name="Especialidade")
 	private String Especialidade;
 
-	public int getCRM() {
+	public String getCRM() {
 		return CRM;
 	}
 
-	public void setCRM(int crm) {
+	public void setCRM(String crm) {
 		this.CRM = crm;
 	}
 

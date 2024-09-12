@@ -15,7 +15,7 @@ public class Paciente implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@CPF
+	@Id
 	@Column(name="CPF")
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private String CPF;
