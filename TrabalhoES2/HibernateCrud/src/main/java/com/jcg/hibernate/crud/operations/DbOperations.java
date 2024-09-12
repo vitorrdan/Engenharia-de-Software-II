@@ -42,6 +42,7 @@ public class DbOperations {
                 count = count + 1;
                 medicoObj = new Medico();
                 medicoObj.setNome("Médico " + j);
+				medicoObj.setCRM("1458060crm" + j);  
                 medicoObj.setSalario("5000");
                 medicoObj.setEspecialidade("Clínico Geral");
                 sessionObj.save(medicoObj);
@@ -462,14 +463,16 @@ public static void createSingleMedicoRecord() {
     }
 }
 
+/*
+ * TESTE
+ */
 
 public static void main(String[] args) {
     logger.info(".......Teste de criação de um único médico.......\n");
 
-    // Criando um único registro de médico
+ 
     DbOperations.createSingleMedicoRecord();
 
-    // Exibindo os registros de médicos para confirmar a inserção
     List<Medico> medicos = DbOperations.displayRecords();
     if (medicos != null && !medicos.isEmpty()) {
         for (Medico medico : medicos) {

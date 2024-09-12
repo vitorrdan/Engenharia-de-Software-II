@@ -1,6 +1,5 @@
 package com.jcg.hibernate.crud.operations;
 import java.io.Serializable;
-import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

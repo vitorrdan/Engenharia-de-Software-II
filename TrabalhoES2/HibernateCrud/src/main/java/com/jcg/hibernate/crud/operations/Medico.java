@@ -17,7 +17,6 @@ public class Medico implements Serializable {
 
 	@Id
 	@Column(name="CRM")
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private String CRM;
 
 	@Column(name="Nome")
